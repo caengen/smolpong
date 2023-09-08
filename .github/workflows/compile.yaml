@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
+          node-version: 18
       - name: Install Global Dependencies
         run: npm i -g minify
       - name: Minify stuff
-        run: minify ./docs/index.html > ./docs/index.min.html
+        run: touch ./docs/index.min.html && minify ./docs/index.html > ./docs/index.min.html
       - name: Zip stuff
         run: zip -DXjq9 index.zip ./docs/index.min.html
       - name: delete old
