@@ -36,8 +36,8 @@ var keyboardListener = (e) => {
 };
 listener("keydown", keyboardListener);
 listener("keyup", keyboardListener);
-canvas.onmousemove = (e) => {
-  player1X = e.clientX - fifty;
+canvas.ontouchmove = (e) => {
+  player1X = e.touches[0].clientX - fifty;
 };
 
 let collision = () => {
