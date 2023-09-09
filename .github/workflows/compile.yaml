@@ -16,14 +16,17 @@ jobs:
           node-version: 18
       - name: Install Global Dependencies
         run: npm i -g minify
-      - name: Minify stuff
-        run: touch ./docs/index.min.html && minify ./docs/index.html > ./docs/index.min.html
-      - name: Zip stuff
-        run: zip -DXjq9 index.zip ./docs/index.min.html
-      - name: delete old
-        run: rm -rf ./README.md
-      - name: create new readme
-        run: cat ./readme_preamble.md >> ./README.md && cat index.zip | base64 --wrap 0`" >> ./README.md && cat ")" >> ./README.md
+      - uses: actions/checkout@v3
+      - name: Create url
+        run: |
+          touch index.min.html
+          minify docs/index.html > index.min.html
+          zip -DXjq9 index.zip index.min.html
+          rm -rf ./README.md
+          touch ./README.md
+          cat ./readme_preamble.md >> ./README.md
+          cat index.zip | base64 --wrap 0`" >> ./README.md
+          cat ")" >> ./README.md
       - name: Commit readme
         uses: EndBug/add-and-commit@v9
         with:
