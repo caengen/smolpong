@@ -25,7 +25,10 @@ jobs:
           rm -rf ./README.md
           touch ./README.md
           cat ./readme_preamble.md >> ./README.md
-          echo "[smolsite](https://smolsite.zip/`cat index.zip | base64 --wrap 0`)" >> ./README.md
+          A="[game of pong]("
+          A+="https://smolsite.zip/`cat index.zip | base64 --wrap 0`"
+          A+=")"
+          cat A >> ./README.md
       - name: Commit readme
         uses: EndBug/add-and-commit@v9
         with:
