@@ -36,6 +36,9 @@ var keyboardListener = (e) => {
 };
 listener("keydown", keyboardListener);
 listener("keyup", keyboardListener);
+canvas.onmousemove = (e) => {
+  player1X = e.clientX - fifty;
+};
 
 let collision = () => {
   if (ballX < 0 || ballX > width - ten) ballVelX *= -1;
