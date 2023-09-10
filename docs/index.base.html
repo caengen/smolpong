@@ -3,6 +3,6 @@
     <canvas></canvas>
   </body>
   <script>
-    var e,t,i,l=document.querySelector("canvas"),n=l.width=this.innerWidth,h=l.height=this.innerHeight,a=0,r=0,o=0,c=0,d=.004,s=s=n/2-5,f=h/2,y=1&new Date?n*d:-n*d,m=1&new Date?h*d:-h*d,u=0,v=0,w=10,x=100,g=Math.min,k=Math.max,R=this.requestAnimationFrame,p=this.addEventListener,S=l.getContext("2d");o=c=s=n/2-50;let T=()=>{n=l.width=this.innerWidth,h=l.height=this.innerHeight,e=n/8,t=n/80,S.font="40px Arial",i=.015*n};T(),p("resize",(()=>T()));let q={};var A=e=>{q[e.keyCode]="keydown"==e.type};p("keydown",A),p("keyup",A),l.ontouchmove=e=>{o=e.touches[0].clientX-50};let C,D=l=>{C||(C=l),l-C>1e3/60&&(q[37]&&(a-=i),q[39]&&(a+=i),m>0&&(c+50-s+5>0&&(r-=.005*n),c+50-s+5<w&&(r+=.005*n)),o=g(k(o+a,0),n-e),c=g(k(c+r,0),n-e),(s<0||s>n-w)&&(y*=-1),(f<-10||f>h-w)&&(m*=-1,f>0&&u++,f<0&&v++,s=n/2,f=h/2),s>o&&s<o+e&&f<=w&&(m=g(-1.1*m,w)),s>c&&s<c+e&&f>=h-25&&(m=g(-1.1*m,w)),s+=y,f+=m,S.clearRect(0,0,n,h),S.fillStyle="#000",S.fillRect(o,0,e,w),S.fillRect(c,h-20,e,w),S.fillRect(s,f,t,t),S.fillStyle="#777",S.fillText(u,n/2-w,x,x),S.fillText(v,n/2-w,h-x),a=r=0,C=l),u<10&&v<w?R(D):S.fillText("Game Over",n/2-x,h/2)};R(D);
+    {{SCRIPT}}
   </script>
 </html>

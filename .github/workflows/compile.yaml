@@ -15,11 +15,13 @@ jobs:
         with:
           node-version: 18
       - name: Install Global Dependencies
-        run: npm i -g minify
+        run: npm i -g minify terser
       - uses: actions/checkout@v3
       - name: Create url
         run: |
           touch index.html
+          MANGLE=`terser src/index.ai.js -c --module --mangle`
+          sed -i "s/{{SCRIPT}}/${MANGLE}/g" docs/index.base.html
           minify docs/index.base.html >> index.html
           zip -DXjq9 somesite.zip index.html
           rm -rf ./README.md
