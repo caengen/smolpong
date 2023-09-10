@@ -17,7 +17,8 @@ var canvas = document.querySelector("canvas"),
   fifty = 50,
   ten = 10,
   ballDim,
-  fifteen = 15,
+  playerSpeed,
+  aiSpeedFract = 0.005,
   hundred = 100,
   min = Math.min,
   max = Math.max,
@@ -32,6 +33,7 @@ let init = () => {
   playerWidth = width / 8;
   ballDim = width / 80;
   context.font = `40px Arial`;
+  playerSpeed = width * 0.015;
 };
 init();
 listener("resize", () => init());
@@ -72,14 +74,14 @@ let s = (now) => {
   delta = now - last;
 
   if (delta > 1000 / 60) {
-    if (keyMap[37]) player1Vel -= fifteen;
-    if (keyMap[39]) player1Vel += fifteen;
+    if (keyMap[37]) player1Vel -= playerSpeed;
+    if (keyMap[39]) player1Vel += playerSpeed;
     if (ballVelY > 0) {
       if (player2X + fifty - ballX + 5 > 0) {
-        player2Vel -= 5;
+        player2Vel -= width * aiSpeedFract;
       }
-      if (player2X + fifty - ballX + 5 < 10) {
-        player2Vel += 5;
+      if (player2X + fifty - ballX + 5 < ten) {
+        player2Vel += width * aiSpeedFract;
       }
     }
 
