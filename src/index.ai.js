@@ -103,6 +103,8 @@ let s = (now) => {
     player1Vel = player2Vel = 0;
     last = now;
   }
-  raf(s);
+
+  if (p1 < 10 && p2 < ten) raf(s);
+  else context.fillText("Game Over", width / 2 - hundred, height / 2);
 };
 raf(s);
