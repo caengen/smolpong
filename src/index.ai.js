@@ -62,7 +62,7 @@ let collision = () => {
   if (
     ballX > player2X &&
     ballX < player2X + playerWidth &&
-    ballY >= height - 25
+    ballY >= height - 25 - ballDim / 2
   )
     ballVelY = min(ballVelY * -1.1, ten);
 };
