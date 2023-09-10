@@ -20,9 +20,9 @@ jobs:
       - name: Create url
         run: |
           touch index.html
-          MANGLE=`terser src/index.ai.js -c --module --mangle`
-          sed -i "s/{{SCRIPT}}/${MANGLE}/g" docs/index.base.html
-          minify docs/index.base.html >> index.html
+          export MANGLE=`terser src/index.ai.js -c --module --mangle`
+          perl -pe 's/{SCRIPT}/$ENV{MANGLE}/g' docs/index.base.html >> mangled.html
+          minify mangled.html >> index.html
           zip -DXjq9 somesite.zip index.html
           rm -rf ./README.md
           touch ./README.md
